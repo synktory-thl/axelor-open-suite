@@ -7,6 +7,7 @@
 - Stock Move: if present, use trading name logo in printing.
 - PRODUCTION: do not hide manufacturing order in operation order form opened in a popup.
 - Invoice : made all dashboard's charts and grid based on ventilated invoices.
+- STOCK LOCATION LINE: Fix blank screen issue in stock correction process
 
 ## Bug Fixes
 - Budget amount: Correctly manage the case of refund invoices.
