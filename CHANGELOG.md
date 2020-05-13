@@ -2,7 +2,6 @@
 ## [Unreleased 5.3.5]
 ## Improvements
 - WEEKLY PLANNING : leaveCoef now has default and init values
-- BudgetLine : make dates field required.
 
 ## Bug Fixes
 - STOCK: Fix company display condition
