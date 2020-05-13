@@ -31,8 +31,7 @@ import java.lang.invoke.MethodHandles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TemplateMessageServiceMarketingImpl extends TemplateMessageServiceBaseImpl
-    implements TemplateMessageMarketingService {
+public class TemplateMessageServiceMarketingImpl extends TemplateMessageServiceBaseImpl {
 
   private final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -55,7 +54,6 @@ public class TemplateMessageServiceMarketingImpl extends TemplateMessageServiceB
     return super.getMediaTypeSelect(template);
   }
 
-  @Override
   protected EmailAccount getMailAccount() {
 
     if (emailAccount != null) {
@@ -66,7 +64,6 @@ public class TemplateMessageServiceMarketingImpl extends TemplateMessageServiceB
     return super.getMailAccount();
   }
 
-  @Override
   public void setEmailAccount(EmailAccount emailAccount) {
 
     this.emailAccount = emailAccount;
