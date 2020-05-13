@@ -17,7 +17,6 @@
 		<field name="origin" width="120"/>
 		<field name="reference"/>
 		<field name="description" colSpan="12"/>
-		<field name="bankStatement"/>
 	</grid>
 	
 	<grid name="bank-statement-line-bank-statement-grid" title="Bank Statement lines" model="com.axelor.apps.bankpayment.db.BankStatementLine" orderBy="sequence">
@@ -50,7 +49,6 @@
 			<field name="origin"/>
 			<field name="reference"/>
 			<field name="description" colSpan="12"/>
-			<field name="bankStatement"/>
 		</panel>
 	</form>
 
