@@ -43,6 +43,7 @@ import javax.mail.MessagingException;
 
 public class CampaignServiceImpl implements CampaignService {
 
+  protected TemplateMessageService templateMessageService;
   protected TemplateMessageMarketingService templateMessageMarketingService;
 
   protected EventRepository eventRepo;
@@ -50,8 +51,9 @@ public class CampaignServiceImpl implements CampaignService {
   @Inject
   public CampaignServiceImpl(
       TemplateMessageService templateMessageService,
-      EventRepository eventRepo,
-      TemplateMessageMarketingService templateMessageMarketingService) {
+      TemplateMessageMarketingService templateMessageMarketingService,
+      EventRepository eventRepo) {
+    this.templateMessageService = templateMessageService;
     this.templateMessageMarketingService = templateMessageMarketingService;
     this.eventRepo = eventRepo;
   }
@@ -151,7 +153,7 @@ public class CampaignServiceImpl implements CampaignService {
   protected void generateAndSendMessage(Campaign campaign, Model model, Template template)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException,
           MessagingException, IOException, AxelorException {
-    Message message = templateMessageMarketingService.generateAndSendMessage(model, template);
+    Message message = templateMessageService.generateAndSendMessage(model, template);
     message.setRelatedTo1Select(Campaign.class.getCanonicalName());
     message.setRelatedTo1SelectId(campaign.getId());
   }

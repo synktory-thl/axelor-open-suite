@@ -18,9 +18,8 @@
 package com.axelor.apps.marketing.service;
 
 import com.axelor.apps.message.db.EmailAccount;
-import com.axelor.apps.message.service.TemplateMessageService;
 
-public interface TemplateMessageMarketingService extends TemplateMessageService {
+public interface TemplateMessageMarketingService {
 
   public void setEmailAccount(EmailAccount emailAccount);
 }
