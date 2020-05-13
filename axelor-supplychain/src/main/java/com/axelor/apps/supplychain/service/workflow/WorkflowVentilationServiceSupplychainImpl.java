@@ -73,10 +73,6 @@ public class WorkflowVentilationServiceSupplychainImpl extends WorkflowVentilati
 
   private StockMoveInvoiceService stockMoveInvoiceService;
 
-  private UnitConversionService unitConversionService;
-
-  private AppBaseService appBaseService;
-
   @Inject
   public WorkflowVentilationServiceSupplychainImpl(
       AccountConfigService accountConfigService,
@@ -88,9 +84,7 @@ public class WorkflowVentilationServiceSupplychainImpl extends WorkflowVentilati
       PurchaseOrderRepository purchaseOrderRepository,
       AccountingSituationSupplychainService accountingSituationSupplychainService,
       AppSupplychainService appSupplychainService,
-      StockMoveInvoiceService stockMoveInvoiceService,
-      UnitConversionService unitConversionService,
-      AppBaseService appBaseService) {
+      StockMoveInvoiceService stockMoveInvoiceService) {
 
     super(accountConfigService, invoicePaymentRepo, invoicePaymentCreateService);
     this.saleOrderInvoiceService = saleOrderInvoiceService;
@@ -100,8 +94,6 @@ public class WorkflowVentilationServiceSupplychainImpl extends WorkflowVentilati
     this.accountingSituationSupplychainService = accountingSituationSupplychainService;
     this.appSupplychainService = appSupplychainService;
     this.stockMoveInvoiceService = stockMoveInvoiceService;
-    this.unitConversionService = unitConversionService;
-    this.appBaseService = appBaseService;
   }
 
   public void afterVentilation(Invoice invoice) throws AxelorException {
@@ -280,8 +272,13 @@ public class WorkflowVentilationServiceSupplychainImpl extends WorkflowVentilati
         Unit movUnit = stockMoveLine.getUnit(), invUnit = invoiceLine.getUnit();
         try {
           qtyToCompare =
-              unitConversionService.convert(
-                  invUnit, movUnit, qty, appBaseService.getNbDecimalDigitForQty(), null);
+              Beans.get(UnitConversionService.class)
+                  .convert(
+                      invUnit,
+                      movUnit,
+                      qty,
+                      Beans.get(AppBaseService.class).getNbDecimalDigitForQty(),
+                      null);
         } catch (AxelorException e) {
           throw new AxelorException(
               TraceBackRepository.CATEGORY_INCONSISTENCY,

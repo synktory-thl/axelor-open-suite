@@ -21,8 +21,6 @@ import com.axelor.apps.account.db.Invoice;
 import com.axelor.apps.account.db.repo.InvoicePaymentRepository;
 import com.axelor.apps.account.service.config.AccountConfigService;
 import com.axelor.apps.account.service.payment.invoice.payment.InvoicePaymentCreateService;
-import com.axelor.apps.base.service.UnitConversionService;
-import com.axelor.apps.base.service.app.AppBaseService;
 import com.axelor.apps.businessproject.db.InvoicingProject;
 import com.axelor.apps.businessproject.db.repo.InvoicingProjectRepository;
 import com.axelor.apps.businessproject.service.app.AppBusinessProjectService;
@@ -66,9 +64,7 @@ public class WorkflowVentilationProjectServiceImpl
       AppSupplychainService appSupplychainService,
       InvoicingProjectRepository invoicingProjectRepo,
       TimesheetLineRepository timesheetLineRepo,
-      StockMoveInvoiceService stockMoveInvoiceService,
-      UnitConversionService unitConversionService,
-      AppBaseService appBaseService) {
+      StockMoveInvoiceService stockMoveInvoiceService) {
     super(
         accountConfigService,
         invoicePaymentRepo,
@@ -79,9 +75,7 @@ public class WorkflowVentilationProjectServiceImpl
         purchaseOrderRepository,
         accountingSituationSupplychainService,
         appSupplychainService,
-        stockMoveInvoiceService,
-        unitConversionService,
-        appBaseService);
+        stockMoveInvoiceService);
     this.invoicingProjectRepo = invoicingProjectRepo;
     this.timesheetLineRepo = timesheetLineRepo;
   }
