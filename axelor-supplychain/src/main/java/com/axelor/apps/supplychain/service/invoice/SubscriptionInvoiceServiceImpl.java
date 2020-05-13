@@ -86,6 +86,8 @@ public class SubscriptionInvoiceServiceImpl implements SubscriptionInvoiceServic
         saleOrderInvoiceService.generateInvoice(saleOrderRepo.find(saleOrder.getId()));
 
     if (invoice != null) {
+
+      invoice = saleOrderInvoiceService.generateInvoice(saleOrder);
       if (saleOrder.getPeriodicityTypeSelect() == 1) {
         temporalUnit = ChronoUnit.DAYS;
       }
