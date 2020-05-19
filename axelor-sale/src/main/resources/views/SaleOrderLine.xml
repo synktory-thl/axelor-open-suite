@@ -505,7 +505,7 @@
 	</action-record>
 
 	<action-record name="action-sale-order-line-record-non-negotiable" model="com.axelor.apps.sale.db.SaleOrderLine">
-		<field name="$nonNegotiable" expr="eval: saleOrder?.priceList?.nonNegotiable"/>
+		<field name="$nonNegotiable" expr="eval: __parent__?.priceList?.nonNegotiable" if="__parent__ != null &amp;&amp; __parent__?.priceList != null"/>
 	</action-record>
 
     <action-record name="action-sale-order-line-record-new" model="com.axelor.apps.sale.db.SaleOrderLine">
